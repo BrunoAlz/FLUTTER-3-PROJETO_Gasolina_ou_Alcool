@@ -19,13 +19,22 @@ class _CampoTextoState extends State<CampoTexto> {
       appBar: AppBar(
         title: const Text('Ácool ou Gasolina'),
       ),
-      body: Padding(
+      body: Container(
         padding: EdgeInsets.all(32),
         child: Column(
           children: [
-            Image.asset(
-              'assets/logo.png',
-              height: 150,
+            Padding(
+              padding: EdgeInsets.only(bottom: 32),
+              child: Image.asset(
+                'assets/logo.png',
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Text(
+                'Saiba qual a melhor Opção para abastecer o seu Veículo!',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
             ),
             // Cria um elemento Input
             TextField(
@@ -38,7 +47,6 @@ class _CampoTextoState extends State<CampoTexto> {
               // maxLength: 5,
               // maxLengthEnforcement: true,
               style: TextStyle(
-                fontSize: 20,
                 fontWeight: FontWeight.normal,
               ),
               // obscureText: true, // Password
@@ -65,7 +73,6 @@ class _CampoTextoState extends State<CampoTexto> {
               // maxLength: 5,
               // maxLengthEnforcement: true,
               style: TextStyle(
-                fontSize: 20,
                 fontWeight: FontWeight.normal,
               ),
               // obscureText: true, // Password
@@ -83,26 +90,29 @@ class _CampoTextoState extends State<CampoTexto> {
               controller: _textEditingController,
             ),
             // Cria um botão
-            ElevatedButton(
-              // Adiciona estilos ao botão
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue, // background
-                onPrimary: Colors.white, // foreground
-              ),
-              // Evento de click, cria uma função vazia e não faz nada
-              onPressed: () {
-                // Retorna o valor que foi armazenado pelo controlador - text são
-                // os dados do input
-                print('Valor digitado: ${_textEditingController.text}');
-              },
-              // cria o texto filho do botão
-              child: const Text(
-                'Salvar',
-                style: TextStyle(
-                  fontSize: 25,
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: ElevatedButton(
+                // Adiciona estilos ao botão
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue, // background
+                  onPrimary: Colors.white, // foreground
+                ),
+                // Evento de click, cria uma função vazia e não faz nada
+                onPressed: () {
+                  // Retorna o valor que foi armazenado pelo controlador - text são
+                  // os dados do input
+                  print('Valor digitado: ${_textEditingController.text}');
+                },
+                // cria o texto filho do botão
+                child: const Text(
+                  'Calcular!',
+                  style: TextStyle(
+                    fontSize: 25,
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
