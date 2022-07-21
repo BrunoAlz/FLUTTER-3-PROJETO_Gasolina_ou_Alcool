@@ -11,7 +11,10 @@ class CampoTexto extends StatefulWidget {
 
 class _CampoTextoState extends State<CampoTexto> {
   // Cria uma Instancia para o Controller do input
-  TextEditingController _textEditingController = TextEditingController();
+  TextEditingController _textAlcoolController = TextEditingController();
+  TextEditingController _textGasolinaController = TextEditingController();
+
+  var _resultado = 'Resultado';
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +22,11 @@ class _CampoTextoState extends State<CampoTexto> {
       appBar: AppBar(
         title: const Text('Ácool ou Gasolina'),
       ),
-      body: Container(
+      // O SingleChildScrollView, Ajusta o template com Scroll
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(32),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
               padding: EdgeInsets.only(bottom: 32),
@@ -53,15 +58,15 @@ class _CampoTextoState extends State<CampoTexto> {
 
               // Recupera o valor no Change
               /*onChanged: (String valor) {
-                  print(valor);
-                },*/
+                print(valor);
+              },*/
 
               // Recupera o Valor no Submit
               onSubmitted: (String text) {
                 // print(text);
               },
               // O Controle tem acesso aos dados digitados pelo usuário
-              controller: _textEditingController,
+              controller: _textAlcoolController,
             ),
             TextField(
               // Escolhe o tipo de Teclado como númerico
@@ -79,15 +84,15 @@ class _CampoTextoState extends State<CampoTexto> {
 
               // Recupera o valor no Change
               /*onChanged: (String valor) {
-                  print(valor);
-                },*/
+                print(valor);
+              },*/
 
               // Recupera o Valor no Submit
               onSubmitted: (String text) {
                 // print(text);
               },
               // O Controle tem acesso aos dados digitados pelo usuário
-              controller: _textEditingController,
+              controller: _textGasolinaController,
             ),
             // Cria um botão
             Padding(
@@ -102,7 +107,8 @@ class _CampoTextoState extends State<CampoTexto> {
                 onPressed: () {
                   // Retorna o valor que foi armazenado pelo controlador - text são
                   // os dados do input
-                  print('Valor digitado: ${_textEditingController.text}');
+                  print('Valor Alcool: ${_textAlcoolController.text}');
+                  print('Valor Gasolina: ${_textGasolinaController.text}');
                 },
                 // cria o texto filho do botão
                 child: const Text(
@@ -113,6 +119,16 @@ class _CampoTextoState extends State<CampoTexto> {
                 ),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                _resultado,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
           ],
         ),
       ),
